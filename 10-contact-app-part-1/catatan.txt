@@ -10,3 +10,24 @@ Dalam konteks Promise pada Javascript, fungsi resolve dan reject memiliki peran 
     Digunakan untuk menandakan bahwa operasi asynchronous telah gagal.
     Biasanya dipanggil dengan objek error yang menjelaskan mengapa operasi tersebut gagal.
     Kode yang menunggu Promise menggunakan await akan menangkap error yang diberikan ke reject menggunakan blok catch.
+
+# Operasi Asynchronous:
+    Operasi asynchronous adalah operasi yang tidak selesai secara instan dan membutuhkan waktu untuk diselesaikan. Biasanya operasi ini melibatkan interaksi dengan sumber eksternal, seperti membaca dari file, mengirim permintaan jaringan, atau menunggu timer selesai.
+
+# Masalah Sebelum Async dan Await:
+
+    Sebelum async dan await, developer menggunakan callback atau Promise untuk menangani operasi asynchronous. Masalah yang muncul dengan pendekatan ini adalah:
+
+        1. Callback Hell: Kode menjadi berantakan dan sulit dibaca ketika banyak operasi asynchronous di-chain (dilakukan secara berurutan).
+
+        2. Error Handling: Menangani error dalam operasi asynchronous menggunakan callback bisa jadi rumit.
+    
+# Async:
+    Kata kunci async digunakan sebelum fungsi untuk mendeklarasikannya sebagai fungsi asynchronous.
+    Fungsi asynchronous dapat berjalan tanpa memblokir eksekusi kode lainnya.
+    Fungsinya adalah untuk memulai operasi asynchronous dan mengembalikan sebuah Promise.
+    
+# Await:
+    Kata kunci await hanya bisa digunakan di dalam fungsi asynchronous.
+    Await digunakan untuk menunggu hasil dari operasi asynchronous.
+    Saat await digunakan, eksekusi kode akan dihentikan sementara dan dilanjutkan kembali ketika hasil operasi asynchronous tersedia.
