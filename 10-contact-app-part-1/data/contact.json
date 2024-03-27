@@ -1,4 +1,5 @@
 [
-  { "nama": "riski", "umur": "18" },
-  { "nama": "faris", "umur": "19" }
+  { "nama": "riski", "email": "riski@gmail.com" },
+  { "nama": "farhan", "email": "farhan@gmail.com" },
+  { "nama": "riski", "email": "riski@gmail.com", "noHP": "0932489274892" }
 ]
