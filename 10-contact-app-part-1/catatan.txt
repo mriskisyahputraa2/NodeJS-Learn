@@ -1,0 +1,12 @@
+Dalam konteks Promise pada Javascript, fungsi resolve dan reject memiliki peran penting dalam menangani hasil dari operasi asynchronous. Mari kita bahas masing-masing fungsinya:
+
+1. resolve:
+    Digunakan untuk menandakan bahwa operasi asynchronous telah berhasil diselesaikan.
+    Biasanya dipanggil dengan nilai yang dihasilkan dari operasi tersebut.
+    Nilai yang diberikan ke resolve akan menjadi nilai yang dikembalikan oleh Promise.
+    Kode yang menunggu Promise menggunakan await akan menerima nilai yang diberikan ke resolve.
+
+2. reject:
+    Digunakan untuk menandakan bahwa operasi asynchronous telah gagal.
+    Biasanya dipanggil dengan objek error yang menjelaskan mengapa operasi tersebut gagal.
+    Kode yang menunggu Promise menggunakan await akan menangkap error yang diberikan ke reject menggunakan blok catch.
