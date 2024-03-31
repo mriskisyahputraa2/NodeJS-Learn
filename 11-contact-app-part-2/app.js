@@ -1,4 +1,5 @@
 const yargs = require("yargs");
+const contacts = require("./contacts");
 
 yargs.command({
   command: "add",
@@ -14,10 +15,15 @@ yargs.command({
       demondOption: false,
       type: "string",
     },
-    noHp: {
+    noHP: {
       describe: "No HP",
       demondOption: true,
       type: "string",
     },
   },
+  handler(argv) {
+    simpanContact(argv.nama, argv.email, argv.noHP);
+  },
 });
+
+yargs.parse();
