@@ -1,15 +1,23 @@
-console.log(process.argv);
+const yargs = require("yargs");
 
-// const contacts = require("./contacts"); // mendapatkan file contacts.js
-
-// // mendefinisikan fungsi utama dengan asynchronous
-// const main = async () => {
-//   // membuat pertanyaan dan menunggu jawaban dari user menggunakan await
-//   const nama = await contacts.tulisPertanyaan("Masukkan nama anda: ");
-//   const email = await contacts.tulisPertanyaan("Masukkan email anda: ");
-//   const noHP = await contacts.tulisPertanyaan("Masukkan No HP anda: ");
-
-//   // memanggil fungsi simpanContact dengan params nama, email dan noHP
-//   contacts.simpanContact(nama, email, noHP);
-// };
-// main();
+yargs.command({
+  command: "add",
+  describe: "Menambahkan contact baru",
+  builder: {
+    nama: {
+      describe: "Nama lengkap",
+      demondOption: true,
+      type: "string",
+    },
+    email: {
+      describe: "Email",
+      demondOption: false,
+      type: "string",
+    },
+    noHp: {
+      describe: "No HP",
+      demondOption: true,
+      type: "string",
+    },
+  },
+});
