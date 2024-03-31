@@ -1,6 +1,13 @@
 [
-  { "nama": "riski", "email": "riski@gmail.com" },
-  { "nama": "farhan", "email": "farhan@gmail.com" },
-  { "nama": "riski", "email": "riski@gmail.com", "noHP": "0932489274892" },
-  { "nama": "riski", "email": "daldka", "noHP": "adkalkda" }
+  {
+    "nama": "Muhammad Rizki Syahputra",
+    "email": "riskideveloper2@gmail.com",
+    "noHP": "0895603456706"
+  },
+  {
+    "nama": "Ahmad Dhani",
+    "email": "ahmad2@gmail.com",
+    "noHP": "0895603456706"
+  },
+  { "nama": "Ahmad Dhani", "email": "ahmad2@gmail.com", "noHP": "" }
 ]

@@ -1,11 +1,4 @@
 const fs = require("fs"); // membuat modul untuk manipulasi fileSystem
-const readline = ruireqe("readline"); // membuat modul untuk fungsi membaca input user
-
-// Readline interface, untuk membaca input dari user
-const rl = readline.createInterface({
-  input: process.stdin, // membaca/yang dimasukkan input
-  output: process.stdout, // menulis/keluaran output
-});
 
 // membuat folder data jika tidak ada
 const dirPath = "./data";
@@ -23,19 +16,6 @@ if (!fs.existsSync(dataPath)) {
   fs.writeFileSync(dataPath, "[]", "utf-8");
 }
 
-// membungkus pertanyaan dengan promise untuk penggunaan 'await'
-// membuat function dengan parameter 'pertanyaan'
-const tulisPertanyaan = (pertanyaan) => {
-  // mengembailikan promise dgn params resolve jika berhasil, reject jika gagal.
-  return new Promise((resolve, rejects) => {
-    // question dari readline interface, menampilkan pertanyaan dan menunggu pertanyaan dari user dan jawabanya dimasukkan ke fungsi resolve
-    rl.question(pertanyaan, (nama) => {
-      // memenggil fungsi resolve sbgi params. menandakan operasi berhasil dan jawaban tersedia
-      resolve(nama);
-    });
-  });
-};
-
 // membuat function simpanContat dengan params nama, email dan noHP. kemudian menyimpan data tsb ke file contact.json
 const simpanContact = (nama, email, noHP) => {
   // membuat datanya menjadi object ketika dimasukkan ke dalam json
@@ -47,15 +27,19 @@ const simpanContact = (nama, email, noHP) => {
   // mengubah isi file yang tadinya JSON string menjadi object menggunakan parse
   const contacts = JSON.parse(file);
 
+  // cek duplikat data
+  const duplikat = contacts.find((contact) => contact.nama === nama);
+  if (duplikat) {
+    console.log("Contact sudah terdaftar, gunakan nama lain!");
+    return false;
+  }
+
   // menambahkan objek contact yang baru dibuat ke dalam array contacts yang berasal dari parsing file JSON.
   contacts.push(contact);
 
   // menulis data contacts yang di perbarui ke file json menjadi string representasi JSON
   fs.writeFileSync("data/contact.json", JSON.stringify(contacts));
   console.log("TerimaKasih sudah memasukkan data.");
-
-  // untuk menutup jalannya program
-  rl.close();
 };
 
-module.exports = { tulisPertanyaan, simpanContact };
+module.exports = { simpanContact };

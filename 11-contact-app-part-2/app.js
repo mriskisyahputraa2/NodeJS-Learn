@@ -22,7 +22,7 @@ yargs.command({
     },
   },
   handler(argv) {
-    simpanContact(argv.nama, argv.email, argv.noHP);
+    contacts.simpanContact(argv.nama, argv.email, argv.noHP);
   },
 });
 
