@@ -1,4 +1,6 @@
 const fs = require("fs"); // membuat modul untuk manipulasi fileSystem
+const chalk = require("chalk");
+const validator = require("validator");
 
 // membuat folder data jika tidak ada
 const dirPath = "./data";
@@ -27,11 +29,25 @@ const simpanContact = (nama, email, noHP) => {
   // mengubah isi file yang tadinya JSON string menjadi object menggunakan parse
   const contacts = JSON.parse(file);
 
-  // cek duplikat data
+  // cek duplikat data nama tidak boleh sama
   const duplikat = contacts.find((contact) => contact.nama === nama);
   if (duplikat) {
-    console.log("Contact sudah terdaftar, gunakan nama lain!");
+    console.log(
+      chalk.red.inverse.bold("Contact sudah terdaftar, gunakan nama lain!")
+    );
     return false;
+  }
+
+  // cek format email apakah benar atau tidak
+  if (email) {
+    if (!validator.isEmail(email)) {
+      console.log(chalk.red.inverse.bold("Email tidak valid!"));
+    }
+  }
+
+  // cek no HP dimasukkan atau tidak
+  if (!validator.isMobilePhone(noHP, "id-ID")) {
+    console.log(chalk.red.inverse.bold("Nomor HP tidak valid!"));
   }
 
   // menambahkan objek contact yang baru dibuat ke dalam array contacts yang berasal dari parsing file JSON.
@@ -39,7 +55,7 @@ const simpanContact = (nama, email, noHP) => {
 
   // menulis data contacts yang di perbarui ke file json menjadi string representasi JSON
   fs.writeFileSync("data/contact.json", JSON.stringify(contacts));
-  console.log("TerimaKasih sudah memasukkan data.");
+  console.log(chalk.green.inverse("TerimaKasih sudah memasukkan data."));
 };
 
 module.exports = { simpanContact };
