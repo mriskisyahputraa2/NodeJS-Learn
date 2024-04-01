@@ -29,24 +29,33 @@ const simpanContact = (nama, email, noHP) => {
   // mengubah isi file yang tadinya JSON string menjadi object menggunakan parse
   const contacts = JSON.parse(file);
 
-  // cek duplikat data nama tidak boleh sama
+  // validasi data nama
+  // mengecek apakah nama yang diinputkan sudah ada di database.
   const duplikat = contacts.find((contact) => contact.nama === nama);
+
+  // cek jika nama yang di inputkan sudah ada di database maka
   if (duplikat) {
+    // tampilkan pesan error berikut
     console.log(
       chalk.red.inverse.bold("Contact sudah terdaftar, gunakan nama lain!")
     );
+    // kembalikan false
     return false;
   }
 
   // cek format email apakah benar atau tidak
+  // jika argument email diinputkan maka cek validasi email
   if (email) {
+    // jika validasi email tidak sesuai dengan format email maka
     if (!validator.isEmail(email)) {
+      // tampilkan pesan error berikut
       console.log(chalk.red.inverse.bold("Email tidak valid!"));
     }
   }
 
-  // cek no HP dimasukkan atau tidak
+  // cek no HP yang dimasukkan tidak sesuai dengan noHP indonesia
   if (!validator.isMobilePhone(noHP, "id-ID")) {
+    // tampilkan pesan error berikut
     console.log(chalk.red.inverse.bold("Nomor HP tidak valid!"));
   }
 
