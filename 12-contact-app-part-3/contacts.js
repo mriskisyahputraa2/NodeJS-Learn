@@ -105,6 +105,8 @@ const detailContact = (nama) => {
     // berhentikan program
     return false;
   }
+
+  // menit 15.45
 };
 
 module.exports = { simpanContact, listContact, detailContact };

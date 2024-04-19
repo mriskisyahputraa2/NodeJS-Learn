@@ -12,6 +12,13 @@ const mahasiswa = {
   },
 };
 
+let a = 100;
+let b = 200;
+let hasil = a + b;
+
 // export ke file index
-module.exports.nama = nama;
-module.exports.mahasiswa = mahasiswa;
+// module.exports.nama = nama;
+// module.exports.mahasiswa = mahasiswa;
+
+// penulisan ringkas mengExports
+module.exports = { nama, mahasiswa, hasil };
