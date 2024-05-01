@@ -2,22 +2,28 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
+// menggunakan view engine ejs
+app.set("view engine", "ejs");
+
 app.get("/", (req, res) => {
-  res.sendFile("./index.html", { root: __dirname });
+  // res.sendFile("./index.html", { root: __dirname });
+  res.render("index");
 });
 
 app.get("/about", (req, res) => {
-  res.sendFile("./about.html", { root: __dirname });
+  // res.sendFile("./about.html", { root: __dirname });
+  res.render("about");
 });
 
 app.get("/contact", (req, res) => {
-  res.sendFile("./contact.html", { root: __dirname });
+  // res.sendFile("./contact.html", { root: __dirname });
+  res.render("contact");
 });
 
 // penggunaan route request
-app.get("/product/:id", (req, res) => {
+app.get("/product/:id/category/:idCat", (req, res) => {
   res.send(`Product ID: ${req.params.id} <br>
-    Category ID: ${req.query.category} <br>
+    Category ID: ${req.params.idCat} <br>
   `);
 });
 
