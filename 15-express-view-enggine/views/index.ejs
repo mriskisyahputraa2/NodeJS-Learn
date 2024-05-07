@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NODE JS SERVER</title>
+    <title><% title %></title>
   </head>
   <body>
     <h3>Links</h3>
@@ -20,5 +20,22 @@
       obcaecati placeat, iure beatae earum consequatur voluptatum voluptatem!
       Temporibus, obcaecati.
     </p>
+
+    <h4>Daftar Mahasiswa</h4>
+
+    <!-- jika data array mahasiswa tidak ada isi atau datanya maka,  -->
+    <% if (mahasiswa.length < 1 ) { %>
+    <!-- tampilkan data mahasiswa masih kosong -->
+    <p style="color: red">Data mahasiswa masih kosong.</p>
+    <!--jika ada maka tampilkan datanya --!>
+    <% } else { %>
+
+    <!-- melakukan looping array menggunakan foreach -->
+    <% mahasiswa.forEach(mhs => { %>
+    <ul>
+      <li>Nama: <%= mhs.nama %></li>
+      <li>Email: <%= mhs.email %></li>
+    </ul>
+    <% }) %> <% } %>
   </body>
 </html>

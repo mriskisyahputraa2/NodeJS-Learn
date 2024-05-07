@@ -6,18 +6,38 @@ const port = 3000;
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  // res.sendFile("./index.html", { root: __dirname });
-  res.render("index");
+  const mahasiswa = [
+    {
+      nama: "Muhammad Rizki Syahputra",
+      email: "riskideveloper2@gmail.com",
+    },
+    {
+      nama: "Muhammad Fazil",
+      email: "fazildeveloper2@gmail.com",
+    },
+    {
+      nama: "Ahmad Dhani",
+      email: "ahmad@gmail.com",
+    },
+  ];
+  res.render("index", {
+    title: "Halaman Home",
+    mahasiswa,
+  });
 });
 
 app.get("/about", (req, res) => {
   // res.sendFile("./about.html", { root: __dirname });
-  res.render("about");
+  res.render("about", {
+    title: "Halaman About",
+  });
 });
 
 app.get("/contact", (req, res) => {
   // res.sendFile("./contact.html", { root: __dirname });
-  res.render("contact");
+  res.render("contact", {
+    title: "Halaman Contact",
+  });
 });
 
 // penggunaan route request
